@@ -36,7 +36,7 @@ const releaseVersion = '0.0.1';
  * Github Repo Slug
  * @type {string}
  */
-const repoSlug = 'carbon-design-systsdfsem sdfsdf/carbon-for-ibm-dotcom';
+const repoSlug = 'carbon-design-system/carbon-for-ibm-dotcom';
 
 /**
  * Github API release URL
