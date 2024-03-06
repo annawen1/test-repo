@@ -3,7 +3,7 @@ name: Release Notifications
 on:
   delete:
     branches:
-      - release/v2.*
+      - release/*
 
 jobs:
   release:
