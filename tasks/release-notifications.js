@@ -30,13 +30,13 @@ const githubToken = args.token || process.env.GITHUB_TOKEN;
  * Release version (-v)
  * @type {string}
  */
-const releaseVersion = '0.0.1';
+const releaseVersion = '2.0.0';
 
 /**
  * Github Repo Slug
  * @type {string}
  */
-const repoSlug = 'carbon-design-systsdfsem sdfsdf/carbon-for-ibm-dotcom';
+const repoSlug = 'carbon-design-system/carbon-for-ibm-dotcom';
 
 /**
  * Github API release URL
