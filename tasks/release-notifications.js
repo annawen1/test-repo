@@ -36,7 +36,7 @@ const releaseVersion = '2.0.0';
  * Github Repo Slug
  * @type {string}
  */
-const repoSlug = 'carbon-design-system/carbon-for-ibm-dotcom';
+const repoSlug = 'annawen1/test-repo';
 
 /**
  * Github API release URL
@@ -49,7 +49,7 @@ const releaseLogUrl = `/repos/${repoSlug}/releases/tags/v${releaseVersion}`;
  * @type {string}
  */
 const data = JSON.stringify({
-  body: `Hey there! This issue/pull request was referenced in recently released [v${releaseVersion}](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/releases/tag/v${releaseVersion}).`,
+  body: `Hey there! This issue/pull request was referenced in recently released [v${releaseVersion}](https://github.com/annawen1/test-repo/releases/tag/v${releaseVersion}).`,
 });
 
 /**
@@ -112,8 +112,6 @@ const getPRs = (note) => {
  * Gets the release note
  */
 const getReleaseNote = () => {
-  console.log('githubtoken', `'${githubToken}'`);
-  console.log('release', `'${releaseVersion}'`);
   const options = {
     hostname: 'api.github.com',
     path: releaseLogUrl,
