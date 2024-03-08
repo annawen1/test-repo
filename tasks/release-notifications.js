@@ -39,25 +39,12 @@ const repoSlug = 'annawen1/test-repo';
 const releaseUrl = `/repos/${repoSlug}/releases/latest`;
 
 /**
- * Latest release version
- * @type {string}
- */
-let releaseVersion = '';
-
-/**
- * Data object for Github API call
- * @type {string}
- */
-const data = JSON.stringify({
-  body: `Hey there! This issue/pull request was referenced in recently released [v${releaseVersion}](https://github.com/annawen1/test-repo/releases/tag/v${releaseVersion}).`,
-});
-
-/**
  * Posts the PR comment
  *
  * @param {Array} prIds array of PRs in the release note
+ * @param {string} releaseVersion version
  */
-const postComments = (prIds) => {
+const postComments = (prIds, releaseVersion) => {
   prIds.map((pr) => {
     let path = `/repos/${repoSlug}/issues/${pr}/comments`;
     let method = 'POST';
@@ -71,6 +58,10 @@ const postComments = (prIds) => {
         Authorization: `token ${githubToken}`,
       },
     };
+
+    const data = JSON.stringify({
+      body: `Hey there! This issue/pull request was referenced in recently released [v${releaseVersion}](https://github.com/annawen1/test-repo/releases/tag/v${releaseVersion}).`,
+    });
 
     const req = https.request(options, (res) => {
       let response = '';
@@ -131,8 +122,9 @@ const getLatestRelease = () => {
     res.on('end', () => {
       response = JSON.parse(response);
 
-      releaseVersion = response['tag_name'];
-      getPRs(response.body);
+      const releaseVersion = response['tag_name'];
+      console.log('release version', releaseVersion);
+      getPRs(response.body, response['tag_name']);
     });
   });
 
