@@ -124,7 +124,7 @@ const getLatestRelease = () => {
 
       const releaseVersion = response['tag_name'];
       console.log('release version', releaseVersion);
-      getPRs(response.body, response['tag_name']);
+      getPRs(response.body, releaseVersion);
     });
   });
 
