@@ -45,7 +45,7 @@ const Home = () => (
       }}
     />
     <TableOfContents menuLabel="Jump to" theme="white" stickyOffset={48}>
-      <a name="content-block-mixed" data-title="Content Block - Mixed Groups" />
+      <a name="content-block-mixed" data-title="Content Block - Mixed Groups here" />
       <ContentBlockMixed
         heading="Content Block - Mixed Groups"
         copy="Lorem ipsum *dolor* sit amet, consectetur adipiscing elit. Aenean et ultricies est.
