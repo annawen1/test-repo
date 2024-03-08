@@ -59,8 +59,9 @@ const postComments = (prIds, releaseVersion) => {
       },
     };
 
+    console.log('releaseVersion here', releaseVersion);
     const data = JSON.stringify({
-      body: `Hey there! This issue/pull request was referenced in recently released [v${releaseVersion}](https://github.com/annawen1/test-repo/releases/tag/v${releaseVersion}).`,
+      body: `Hey there! This issue/pull request was referenced in recently released [${releaseVersion}](https://github.com/annawen1/test-repo/releases/tag/${releaseVersion}).`,
     });
 
     const req = https.request(options, (res) => {
@@ -123,7 +124,6 @@ const getLatestRelease = () => {
       response = JSON.parse(response);
 
       const releaseVersion = response['tag_name'];
-      console.log('release version', releaseVersion);
       getPRs(response.body, releaseVersion);
     });
   });
