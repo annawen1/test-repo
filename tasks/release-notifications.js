@@ -58,8 +58,7 @@ const postComments = (prIds, releaseVersion) => {
         Authorization: `token ${githubToken}`,
       },
     };
-
-    console.log('releaseVersion here', releaseVersion);
+    
     const data = JSON.stringify({
       body: `Hey there! This issue/pull request was referenced in recently released [${releaseVersion}](https://github.com/annawen1/test-repo/releases/tag/${releaseVersion}).`,
     });
@@ -89,15 +88,16 @@ const postComments = (prIds, releaseVersion) => {
  * Extract PR ids from release notes
  *
  * @param {string} note release note body
+ * @param {string} releaseVersion version
  */
-const getPRs = (note) => {
+const getPRs = (note, releaseVersion) => {
   const regex = /\((#[\d]+)\)/g;
   const ids = note.match(regex);
 
   // clean ids
   const prIds = ids.map((id) => id.replace(/([(#)])/g, ''));
 
-  postComments(prIds);
+  postComments(prIds, releaseVersion);
 };
 
 /**
