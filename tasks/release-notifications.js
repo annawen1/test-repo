@@ -58,7 +58,7 @@ const postComments = (prIds, releaseVersion) => {
         Authorization: `token ${githubToken}`,
       },
     };
-    
+
     const data = JSON.stringify({
       body: `Hey there! This issue/pull request was referenced in recently released [${releaseVersion}](https://github.com/annawen1/test-repo/releases/tag/${releaseVersion}).`,
     });
@@ -122,7 +122,14 @@ const getLatestRelease = () => {
 
     res.on('end', () => {
       response = JSON.parse(response);
-      getPRs(response.body, response['tag_name']);
+      const releaseVersion = response['tag_name'];
+
+      if(releaseVersion.includes('v2.')){
+        getPRs(response.body, releaseVersion);
+      }
+      else{
+        console.log('Release version is not v2.*');
+      }
     });
   });
 
