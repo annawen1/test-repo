@@ -1,12 +1,8 @@
 name: Release Notifications
 
 on:
-  workflow_dispatch:
-    inputs:
-      release:
-        required: true
-        description: 'Specify release (ie. 2.4.0)'
-        type: string
+  release:
+    types: [published]
 
 jobs:
   post-comments:

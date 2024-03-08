@@ -27,12 +27,6 @@ const args = program.parse(process.argv);
 const githubToken = args.token || process.env.GITHUB_TOKEN;
 
 /**
- * Release version (-v)
- * @type {string}
- */
-const releaseVersion = '2.0.0';
-
-/**
  * Github Repo Slug
  * @type {string}
  */
@@ -42,7 +36,7 @@ const repoSlug = 'annawen1/test-repo';
  * Github API release URL
  * @type {string}
  */
-const releaseLogUrl = `/repos/${repoSlug}/releases/tags/v${releaseVersion}`;
+const releaseUrl = `/repos/${repoSlug}/releases/latest`;
 
 /**
  * Data object for Github API call
@@ -109,12 +103,12 @@ const getPRs = (note) => {
 };
 
 /**
- * Gets the release note
+ * Get latest release
  */
-const getReleaseNote = () => {
+const getLatestRelease = () => {
   const options = {
     hostname: 'api.github.com',
-    path: releaseLogUrl,
+    path: releaseUrl,
     headers: {
       'User-Agent': 'node/https',
       Authorization: `token ${githubToken}`,
@@ -130,7 +124,6 @@ const getReleaseNote = () => {
 
     res.on('end', () => {
       response = JSON.parse(response);
-      console.log('response', response);
       getPRs(response.body);
     });
   });
@@ -140,6 +133,6 @@ const getReleaseNote = () => {
   });
 
   req.end();
-};
+}
 
-getReleaseNote();
+getLatestRelease();
