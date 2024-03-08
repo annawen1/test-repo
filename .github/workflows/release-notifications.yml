@@ -3,7 +3,7 @@ name: Release Notifications
 on:
   workflow_dispatch:
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   post-comments:
