@@ -39,6 +39,12 @@ const repoSlug = 'annawen1/test-repo';
 const releaseUrl = `/repos/${repoSlug}/releases/latest`;
 
 /**
+ * Latest release version
+ * @type {string}
+ */
+let releaseVersion = '';
+
+/**
  * Data object for Github API call
  * @type {string}
  */
@@ -124,6 +130,8 @@ const getLatestRelease = () => {
 
     res.on('end', () => {
       response = JSON.parse(response);
+
+      releaseVersion = response['tag_name'];
       getPRs(response.body);
     });
   });
