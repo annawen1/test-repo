@@ -122,9 +122,7 @@ const getLatestRelease = () => {
 
     res.on('end', () => {
       response = JSON.parse(response);
-
-      const releaseVersion = response['tag_name'];
-      getPRs(response.body, releaseVersion);
+      getPRs(response.body, response['tag_name']);
     });
   });
 
