@@ -26,7 +26,7 @@ const Home = () => (
       type="centered"
       theme="g100"
       title="Lead space title"
-      copy="Use this area for a short line of copy to support the title"
+      copy="Use this area for a short line of copy to support the title here"
       gradient={true}
       // buttons={buttons}
       image={{
